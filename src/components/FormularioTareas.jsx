@@ -14,6 +14,12 @@ const FormularioTareas = () => {
     //limpiar form
     setTarea("");
   };
+
+  const borrarTarea = (nombreTarea) =>{ //trabajamos con splice para poder generar la eliminacion de una tarea x
+    const arrayFilter=arrayTareas.filter((elementoTarea)=>elementoTarea!==nombreTarea);
+    setArrayTareas(arrayFilter);
+  }
+
   return (
     <div>
       <Form onSubmit={handleSubmit}>
@@ -32,7 +38,7 @@ const FormularioTareas = () => {
           </button>
         </Form.Group>
       </Form>
-      <ListaTareas tareas={arrayTareas}></ListaTareas>
+      <ListaTareas tareas={arrayTareas} borrar={borrarTarea}></ListaTareas>
     </div>
   );
 };
