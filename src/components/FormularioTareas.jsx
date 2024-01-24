@@ -1,16 +1,24 @@
 import Form from "react-bootstrap/Form";
 import ListaTareas from "./ListaTareas";
-import { useState } from "react";
+import { useState , useEffect } from "react";
 
 const FormularioTareas = () => {
   const [tarea, setTarea] = useState("");
-  const [arrayTareas, setArrayTareas] = useState([]);
+  const tareasLocalStorage= JSON.parse(localStorage.getItem('listaTareas')) || [];
+  const [arrayTareas, setArrayTareas] = useState(tareasLocalStorage);
+
+  //useEffect se utiliza en el montaje y por cada carga de tareas se usa en la actualizacion de la lista
+  useEffect(()=>{ // con useEffect haremos la carga de la lista de tareas en el localStorage
+    localStorage.setItem('listaTareas',JSON.stringify(arrayTareas));
+  },[arrayTareas])
 
   const handleSubmit = (e) => {
     //para que se pueda guardar el state desde el boton a traves del evento submit
     e.preventDefault();
+
     //operador spread [...array,elemento]
     setArrayTareas([...arrayTareas, tarea]); //realiza el push en el array guardando la ultima tarea agregada
+
     //limpiar form
     setTarea("");
   };
