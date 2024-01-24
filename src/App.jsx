@@ -1,8 +1,8 @@
 import { Container } from "react-bootstrap";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import ListaTareas from "./components/ListaTareas";
 import Footer from "./components/Footer";
+import FormularioTareas from "./components/FormularioTareas";
 function App() {
   return (
     <>
@@ -10,7 +10,7 @@ function App() {
         <h1 className="display-3 my-3 text-center text-light">
           Lista de Tareas
         </h1>
-        <ListaTareas></ListaTareas>
+        <FormularioTareas></FormularioTareas>
       </Container>
       <Footer></Footer>
     </>
